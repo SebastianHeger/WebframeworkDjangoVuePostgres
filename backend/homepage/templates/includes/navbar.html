@@ -1,0 +1,34 @@
+<!--Navbar-->
+<div class="navbar-fixed">
+    <nav class="green lighten-1">
+        <div class="nav-wrapper col s12 m6 s4">
+            <a href="/" class="brand-logo center">Webframework</a>
+            <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="{% url 'homepage' %}"><i class="large material-icons left">home</i></a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                    <li><a href="/accout"><i class="large material-icons left">account_circle</i>{{user.username}}</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="large material-icons left">do_not_disturb</i>Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}"><i class="large material-icons left">fingerprint</i>Register</a></li>
+                    <li><a href="{% url 'login' %}"><i class="large material-icons left">donut_small</i>Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<!--Sidenavigation-->
+<ul class="sidenav" id="mobile-links">
+    <li><a href="{% url 'homepage' %}"><i class="material-icons left">home</i>Home</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="/accout"><i class="material-icons left">account_circle</i>{{user.username}}</a></li>
+        <li><a href="{% url 'logout' %}"><i class="material-icons left">do_not_disturb</i>Logout</a></li>
+    {% else %}
+        <li><a href="{% url 'register' %}"><i class="material-icons left">fingerprint</i>Register</a></li>
+        <li><a href="{% url 'login' %}"><i class="material-icons left">donut_small</i>Login</a></li>
+    {% endif %}
+</ul>

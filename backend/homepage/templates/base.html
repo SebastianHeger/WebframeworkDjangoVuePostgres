@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<header>
+    {% load static %}
+
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Icon stuff -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--<script src="{% static 'rango-jquery.js' %}"></script>-->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+    {% block header %}
+    {% endblock %}
+
+    <title>Webframework - {% block title %}Home{% endblock %}</title>
+</header>
+
+<main>
+{% include "includes/navbar.html" %}
+{% include "includes/messages.html" %}
+<br/>
+<!-- PageContent -->
+{% block content %}
+{% endblock %}
+<br/>
+<br/>
+</main>
+
+<footer class="page-footer green lighten-1">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Rechtliches</h5>
+                <p class="grey-text text-lighten-4">Haftungsausschluss</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Impressum</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright row center">
+        <div class="container">© 2020 Webframework.de</div>
+    </div>
+</footer>
+
+<script>M.AutoInit();</script>
+
+</html>
