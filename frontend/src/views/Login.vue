@@ -3,8 +3,8 @@
         <v-container fill-height justify-center>
             <v-col sm="8" md="6" xl="4">
                 <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
-                <p v-if="incorrectAuth">Falscher Nutzername oder Passwort eingegeben</p>
                 <v-form v-on:submit.prevent="login">
+                    <v-alert v-if="authFailure==true">bla</v-alert>
                     <v-text-field
                         class="red--text"
                         v-model="username"
@@ -47,8 +47,8 @@ export default {
         return {
             username: '',
             password: '',
-            incorrectAuth: false,
-            showPassword: false
+            showPassword: false,
+            authFailure: false
         }
     },
     methods: {
@@ -56,14 +56,14 @@ export default {
             this.$store.dispatch('userLogin', {
                 username: this.username,
                 password: this.password,
-
             })
             .then(() => {
                 this.$router.push({name: 'Home'})
             })
-            .catch(err => {
-                console.log(err)
-                this.incorrectAuth = true
+            .catch((error) => {
+                if(error === 401) {
+                    this.authFailure = true
+                }
             })
         }
     }

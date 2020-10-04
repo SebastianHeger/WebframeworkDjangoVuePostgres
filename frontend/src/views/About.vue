@@ -1,6 +1,8 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <v-container fill-height justify-center>
+      <h1>This is an about page</h1>
+    </v-container>
   </div>
 </template>
 

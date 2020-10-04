@@ -41,7 +41,7 @@ export default new Vuex.Store({
         },
         
         userLogin (context, usercredentials) {
-            return new Promise((resolve) => {
+            return new Promise((resolve, reject) => {
                 getAPI.post('/api-token/', {
                     username: usercredentials.username,
                     password: usercredentials.password
@@ -52,7 +52,11 @@ export default new Vuex.Store({
                         refresh:response.data.refresh
                     })
                     resolve()
-                })
+                }, error => {
+                    console.log(error.response.status)
+                    console.log(error.response.data.detail)
+                    reject(error.response.status)
+                })                
             })
         },
 
