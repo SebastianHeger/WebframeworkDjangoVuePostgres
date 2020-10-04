@@ -19,12 +19,12 @@
 
       <v-spacer></v-spacer>
       
-      <v-btn :to="{ name:'Login' }" text color=primary>
+      <v-btn v-if="accessToken==null" :to="{ name:'Login' }" text color=primary>
         <span>Login</span>
         <v-icon right>mdi-login</v-icon>
       </v-btn>
 
-      <v-btn :to="{ name:'Logout' }" text color=primary>
+      <v-btn v-if="accessToken!=null" :to="{ name:'Logout' }" text color=primary>
         <span>Logout</span>
         <v-icon right>mdi-logout</v-icon>
       </v-btn>
