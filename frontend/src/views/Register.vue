@@ -56,17 +56,17 @@ export default {
     },
     methods: {
         register () {
-            this.$store.dispatch('userLogin', {
+            this.$store.dispatch('userRegistration', {
+                email: this.email,
                 username: this.username,
                 password: this.password,
-
             })
             .then(() => {
                 this.$router.push({name: 'Home'})
             })
             .catch(err => {
                 console.log(err)
-                this.incorrectAuth = true
+                
             })
         }
     }

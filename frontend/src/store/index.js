@@ -26,6 +26,20 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        userRegistration (context, usercredentials) {
+            return new Promise((resolve) => {
+                getAPI.post('/register/', {
+                    email: usercredentials.email,
+                    username: usercredentials.username,
+                    password: usercredentials.password
+                })
+                .catch (response => {
+                    console.log(response.data)
+                })
+                resolve()
+            })
+        },
+        
         userLogin (context, usercredentials) {
             return new Promise((resolve) => {
                 getAPI.post('/api-token/', {
@@ -41,6 +55,7 @@ export default new Vuex.Store({
                 })
             })
         },
+
         userLogout (context) {
             if (context.getters.loggedIn) {
                 context.commit('destroyToken')
