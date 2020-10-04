@@ -2,6 +2,7 @@
   <nav>
     <v-toolbar>
       <v-btn :to="{ name:'Home' }" text color=primary>
+        <span>Home</span>
         <v-icon>mdi-home</v-icon>
       </v-btn>
 
@@ -19,6 +20,11 @@
 
       <v-spacer></v-spacer>
       
+      <v-btn v-if="accessToken==null" :to="{ name:'Register' }" text color=primary>
+        <span>Register</span>
+        <v-icon right>mdi-fingerprint</v-icon>
+      </v-btn>
+
       <v-btn v-if="accessToken==null" :to="{ name:'Login' }" text color=primary>
         <span>Login</span>
         <v-icon right>mdi-login</v-icon>

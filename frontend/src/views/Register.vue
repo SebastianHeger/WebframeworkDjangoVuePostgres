@@ -1,12 +1,15 @@
 <template>
-    <div class="login">
+    <div class="register">
         <v-container fill-height justify-center>
             <v-col sm="8" md="6" xl="4">
-                <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
-                <p v-if="incorrectAuth">Falscher Nutzername oder Passwort eingegeben</p>
-                <v-form v-on:submit.prevent="login">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Register</h1>
+                <v-form v-on:submit.prevent="register">
                     <v-text-field
-                        class="red--text"
+                        v-model="email"
+                        label="E-Mail-Adresse"
+                        outlined
+                    ></v-text-field>
+                    <v-text-field
                         v-model="username"
                         label="Nutzername"
                         outlined
@@ -27,7 +30,7 @@
                             elevation="2"
                             raised
                             rounded>
-                            Login
+                            Register
                         </v-btn>
                     </v-row>
                 </v-form>
@@ -39,20 +42,20 @@
 <script>
 
 export default {
-    name: 'Login',
+    name: 'Register',
     components: {
 
     },
     data () {
         return {
+            email: '',
             username: '',
             password: '',
-            incorrectAuth: false,
             showPassword: false
         }
     },
     methods: {
-        login () {
+        register () {
             this.$store.dispatch('userLogin', {
                 username: this.username,
                 password: this.password,
