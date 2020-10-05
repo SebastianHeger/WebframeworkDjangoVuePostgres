@@ -1,10 +1,16 @@
 <template>
-<div class="log">
-</div>
+    <div class="log">
+        
+    </div>
 </template>
 
 <script>
     export default {
+        data () {
+            return { 
+                
+            }
+        },
         created() {
             this.$store.dispatch('userLogout')
             .then(() => {
