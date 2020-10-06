@@ -4,19 +4,6 @@
             <v-col sm="8" md="6" xl="4">
                 <h1 class="h3 mb-3 font-weight-normal text-center">Login</h1>
                 <v-form v-on:submit.prevent="login">
-                    <v-snackbar v-model="authFailure" timeout="5000">
-                        Nutzername und Passwort passen nicht zusammen
-                        <template v-slot:action="{ attrs }">
-                            <v-btn
-                            color="secondary"
-                            text
-                            v-bind="attrs"
-                            @click="snackbar = false"
-                            >
-                                Schließen
-                            </v-btn>
-                        </template>
-                    </v-snackbar>
                     <v-text-field
                         v-model="username"
                         label="Nutzername"
@@ -59,7 +46,6 @@ export default {
             username: '',
             password: '',
             showPassword: false,
-            authFailure: false
         }
     },
     methods: {
@@ -70,10 +56,17 @@ export default {
             })
             .then(() => {
                 this.$router.push({name: 'Home'})
+                this.$store.commit("snackbarMessage", {
+                    text: "Nutzer eingeloggt",
+                    color: "success",
+                })
             })
             .catch((error) => {
                 if(error === 401) {
-                    this.authFailure = true
+                    this.$store.commit("snackbarMessage", {
+                    text: "Login fehlgeschlagen",
+                    color: "error",
+                })
                 }
             })
         }

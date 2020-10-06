@@ -51,7 +51,7 @@ export default {
             email: '',
             username: '',
             password: '',
-            showPassword: false
+            showPassword: false,
         }
     },
     methods: {
@@ -63,10 +63,17 @@ export default {
             })
             .then(() => {
                 this.$router.push({name: 'Home'})
+                this.$store.commit("snackbarMessage", {
+                    text: "Nutzer registriert",
+                    color: "success",
+                })
             })
-            .catch(err => {
-                console.log(err)
-                
+            .catch(error => {
+                console.log(error)
+                this.$store.commit("snackbarMessage", {
+                    text: "Registrierungsfehler",
+                    color: "error",
+                })
             })
         }
     }
