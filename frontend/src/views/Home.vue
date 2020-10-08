@@ -12,5 +12,11 @@ export default {
   components: {
 
   },
+  created() {
+    this.$store.commit("snackbarMessage", {
+        text: "Homepage",
+        color: "success",
+    })
+  }
 }
 </script>

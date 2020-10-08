@@ -1,9 +1,23 @@
 <template>
-  <v-snackbar v-model="snackbarVisible" :color="color" :timeout="persistent ? 0 : 6000" :vertical="true">
+  <v-snackbar 
+    v-model="snackbarVisible" 
+    :color="color" 
+    :timeout="persistent ? 0 : 6000" 
+    right 
+    centered 
+    transition="slide-x-reverse-transition"
+    >
     {{ message }}
-    <v-btn v-if="!persistent" dark text @click="snackbarVisible = false">
-      Schließen
-    </v-btn>
+    <template v-slot:action="{ attrs }">
+      <v-btn
+        color="white"
+        text
+        v-bind="attrs"
+        @click="snackbarVisible = false"
+        >
+        Schließen
+      </v-btn>
+    </template>
   </v-snackbar>
 </template>
 
