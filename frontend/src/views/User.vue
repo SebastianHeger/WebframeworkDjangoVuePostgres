@@ -1,7 +1,10 @@
 <template>
   <div class="user">
     <v-container fill-height justify-center>
-      <h1>Hello {{username}}</h1>
+      <h1>Hello {{ username }}</h1>
+      <v-row>
+        <p>Email: {{ userData.email }}</p>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -19,7 +22,8 @@ export default {
   },
   data() {
     return { 
-        username: null
+        username: null,
+        userData: null
     }
   },
   created() {
@@ -29,6 +33,8 @@ export default {
             .getUser(this.username)
             .then((result) => {
                 console.log(result.data)
+                this.userData = result.data
+                console.log(this.userData)
             })
     }
     else {

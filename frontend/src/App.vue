@@ -7,9 +7,9 @@
       <router-view />
       <Snackbar/>
     </main>
-    <footer>
+    <v-footer absolute padless color="primary">
       <Footer/>
-    </footer>
+    </v-footer>
   </v-app>
 </template>
 
