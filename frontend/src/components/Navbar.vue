@@ -36,6 +36,11 @@
               <v-icon right>mdi-login</v-icon>
             </v-btn>
 
+            <v-btn v-if="accessToken!=null" :to="{ name:'User' }" text color=primary>
+              <span>User</span>
+              <v-icon right>mdi-account</v-icon>
+            </v-btn>
+
             <v-btn v-if="accessToken!=null" :to="{ name:'Logout' }" text color=primary>
               <span>Logout</span>
               <v-icon right>mdi-logout</v-icon>

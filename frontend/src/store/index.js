@@ -6,17 +6,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        username: null,
         accessToken: null,
         refreshToken: null,
         APIData: '',
         snackbarMessage: null
     },
     mutations: {
-        updateStorage (state, {access, refresh}) {
+        updateStorage (state, {username, access, refresh}) {
+            state.username = username
             state.accessToken = access
             state.refreshToken = refresh
         },
         destroyToken (state) {
+            state.username = null
             state.accessToken = null
             state.refreshToken = null
         },
@@ -25,6 +28,12 @@ export default new Vuex.Store({
         }
     },
     getters: {
+        user (state) {
+            return state.username
+        },
+        accessToken (state) {
+            return state.accessToken
+        },
         loggedIn (state) {
             return state.accessToken != null
         }, 
@@ -61,15 +70,12 @@ export default new Vuex.Store({
                 })
                 .then (response => {
                     context.commit('updateStorage', {
+                        username: usercredentials.username,
                         access: response.data.access,
-                        refresh:response.data.refresh
+                        refresh: response.data.refresh
                     })
                     resolve()
                 }, error => {
-                    /** 
-                    console.log(error.response.status)
-                    console.log(error.response.data.detail)
-                    */
                     reject(error.response.status)
                 })                
             })

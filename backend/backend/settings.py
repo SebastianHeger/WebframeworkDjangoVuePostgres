@@ -27,7 +27,7 @@ SECRET_KEY = 'q+kg46rv=z)46+0n7h-ygxr$u%os4wr#e99d2hrs6&b*n#x6(6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -64,9 +64,12 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_HEADERS = list(default_headers) + ['contenttype', ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ],
+    'DEFAULT_PERMISSON_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
 }
 
 ROOT_URLCONF = 'backend.urls'
