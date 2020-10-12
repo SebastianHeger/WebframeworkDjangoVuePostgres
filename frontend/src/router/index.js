@@ -6,6 +6,10 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import User from '../views/User.vue'
+import Team from '../views/Team.vue'
+import Imprint from '../views/Imprint.vue'
+import Contact from '../views/Contact.vue'
+import Carrier from '../views/Carrier.vue'
 
 
 Vue.use(VueRouter)
@@ -40,6 +44,26 @@ const routes = [
     path: '/user',
     name: 'User',
     component: User
+  },
+  {
+    path: '/team',
+    name: 'Team',
+    component: Team
+  },
+  {
+    path: '/imprint',
+    name: 'Imprint',
+    component: Imprint
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
+  },
+  {
+    path: '/carrier',
+    name: 'Carrier',
+    component: Carrier
   },
 ]
 

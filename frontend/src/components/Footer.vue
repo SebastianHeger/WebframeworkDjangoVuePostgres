@@ -1,13 +1,20 @@
 <template>
-<v-row
+  <div>
+  <v-row
+      justify="center"
+      no-gutters
+      class="primary"
+    >
+      <v-btn :to="{ name:'Team' }" color="white" text rounded>Team</v-btn>
+      <v-btn :to="{ name:'Imprint' }" color="white" text rounded>Imprint</v-btn>
+      <v-btn :to="{ name:'Contact' }" color="white" text rounded>Contact</v-btn>
+      <v-btn :to="{ name:'Carrier' }" color="white" text rounded>Carrier</v-btn>
+
+    </v-row>
+    <v-row
       justify="center"
       no-gutters
     >
-      <v-btn color="white" text rounded>Team</v-btn>
-      <v-btn color="white" text rounded>Impressum</v-btn>
-      <v-btn color="white" text rounded>Kontakt</v-btn>
-      <v-btn color="white" text rounded>Karriere</v-btn>
-
       <v-col
         class="primary py-4 text-center white--text"
         cols="12"
@@ -17,6 +24,7 @@
         <span>Framework</span>
       </v-col>
     </v-row>
+  </div>
 </template>
 
 <script>

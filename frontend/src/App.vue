@@ -3,13 +3,13 @@
     <header>
         <Navbar/>
     </header>
-    <main>
+    <main id="content">
       <router-view />
       <Snackbar/>
     </main>
-    <v-footer absolute padless color="primary">
+    <footer id="footer">
       <Footer/>
-    </v-footer>
+    </footer>
   </v-app>
 </template>
 
@@ -27,3 +27,16 @@ export default {
   },
 };
 </script>
+
+<style>
+#content {
+  padding-bottom: 5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;            /* Footer height */
+}
+</style>
