@@ -30,13 +30,13 @@ export default {
 
 <style>
 #content {
-  padding-bottom: 5rem;    /* Footer height */
+  padding-bottom: 5.75rem;
 }
 
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 5rem;            /* Footer height */
+  height: 5.75rem;
 }
 </style>
