@@ -4,9 +4,17 @@ services:
   backend:
     container_name: backend
     build:
-      context: ..
-      dockerfile: dockerfiles/backend/Dockerfile
+      context: ../backend
+      dockerfile: Dockerfile
     restart: always
+    environment:
+      - POSTGRES_DB=webframeworkdb
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
       - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+    - ../backend:/app
+    command: gunicorn -w 1 -b 0.0.0.0:8000 backend.wsgi:application --reload

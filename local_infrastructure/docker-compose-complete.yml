@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - POSTGRES_DB=webframeworkdb
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "8000:8000"
+    volumes:
+    - ../backend:/app
+    command: gunicorn -w 1 -b 0.0.0.0:8000 backend.wsgi:application --reload
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: database
+    build: ./database
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=webframeworkdb
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    ports:
+      - '8080:8080'
+
+volumes:
+  database_data:
+    driver: local

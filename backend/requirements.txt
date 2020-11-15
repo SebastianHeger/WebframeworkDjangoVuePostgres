@@ -1,6 +1,7 @@
 markdown
 Django
-psycopg2
 djangorestframework
 djangorestframework_simplejwt
 django-cors-headers
+gunicorn
+psycopg2-binary

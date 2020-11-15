@@ -7,7 +7,7 @@ volumes:
 services:
   postgres:
     container_name: database
-    build: ../dockerfiles/database
+    build: ./database
     image: postgres
     restart: always
     ports:
